@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import { IMaskInput } from "react-imask"
 import ElectricBorder from "../../../../src/component/ElectricBorder"
+import Select from "./Select"
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -121,21 +122,14 @@ export default function ContactForm() {
                   <p className="mt-2 text-sm text-red-400">{errors.name}</p>
                 )}
               </div>
-
-              {/* select */}
               <div>
-                <label className="mb-2 block text-sm text-gray-400">
-                  Тип сайта
-                </label>
-                <select
-                  name="siteType"
+                <Select
                   value={form.siteType}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border border-white/10 bg-[#020617] px-5 py-4 text-white transition outline-none focus:border-orange-400/40 focus:ring-1 focus:ring-orange-400/30"
-                >
-                  <option>На платформе Tilda</option>
-                  <option>Индивидуальная разработка</option>
-                </select>
+                  name="siteType"
+                  onChange={(val) =>
+                    setForm((prev) => ({ ...prev, siteType: val }))
+                  }
+                />
               </div>
 
               {/* phone */}
