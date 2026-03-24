@@ -78,15 +78,18 @@ export const Hero = () => {
 
             <div className="mt-8 flex gap-4">
               <Magnet padding={25} disabled={false} magnetStrength={5}>
-                <button className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:bg-neutral-200">
-                  Записаться на консультацию
-                  <ArrowRight size={18} />
-                </button>
+                <a href="/#contacts">
+                  <button className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:bg-neutral-200">
+                    Записаться на консультацию
+                    <ArrowRight size={18} />
+                  </button>
+                </a>
               </Magnet>
-
-              <button className="rounded-xl border border-white/30 px-6 py-3 text-white transition hover:bg-white/10">
-                Узнать больше
-              </button>
+              <a href="/#why">
+                <button className="rounded-xl border border-white/30 px-6 py-3 text-white transition hover:bg-white/10">
+                  Узнать больше
+                </button>
+              </a>
             </div>
           </div>
         </div>

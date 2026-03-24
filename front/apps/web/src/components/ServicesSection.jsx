@@ -98,11 +98,13 @@ export default function ServicesSection() {
               <div className="mb-8 text-xl text-white">{item.price}</div>
 
               {/* button */}
-              <button className="relative overflow-hidden rounded-xl border border-orange-400/40 px-6 py-3 text-sm text-white transition hover:border-orange-400">
-                <span className="relative z-10">Выбрать вариант</span>
+              <a href="/#contacts">
+                <button className="relative overflow-hidden rounded-xl border border-orange-400/40 px-6 py-3 text-sm text-white transition hover:border-orange-400">
+                  <span className="relative z-10">Выбрать вариант</span>
 
-                <span className="absolute inset-0 bg-orange-500/10 opacity-0 transition group-hover:opacity-100" />
-              </button>
+                  <span className="absolute inset-0 bg-orange-500/10 opacity-0 transition group-hover:opacity-100" />
+                </button>
+              </a>
             </motion.div>
           ))}
         </div>

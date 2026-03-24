@@ -40,12 +40,6 @@ export default function ProcessSection() {
 
         {/* timeline */}
         <div className="relative">
-          {/* top line */}
-          <div className="absolute top-8 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-orange-400/40 to-transparent" />
-
-          {/* bottom line */}
-          <div className="absolute top-55 left-0 h-[2px] w-full translate-y-[56px] bg-gradient-to-r from-transparent via-orange-400/30 to-transparent" />
-
           <div className="grid gap-16 md:grid-cols-4">
             {steps.map((step, index) => (
               <motion.div
@@ -58,7 +52,7 @@ export default function ProcessSection() {
               >
                 {/* dot */}
                 <div className="relative mb-8 flex items-center">
-                  <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-orange-400/40 bg-[#020617] text-base font-medium">
+                  <div className="relative z-10 flex h-18 w-18 items-center justify-center rounded-full border border-orange-400/40 bg-[#020617] text-xl font-medium">
                     {index + 1}
                   </div>
 

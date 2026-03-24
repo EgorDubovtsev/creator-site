@@ -45,10 +45,12 @@ export default function AboutMe() {
 
           {/* CTA */}
           <div className="flex items-center gap-4">
-            <button className="flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3 font-medium text-black transition hover:bg-orange-400">
-              Связаться
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
+            <a href="/#contacts">
+              <button className="flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3 font-medium text-black transition hover:bg-orange-400">
+                Связаться
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            </a>
 
             <div className="text-sm text-gray-500">Отвечаю лично</div>
           </div>
