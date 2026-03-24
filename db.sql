@@ -1,0 +1,10 @@
+CREATE TABLE contact_request (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phone VARCHAR(50),
+    email VARCHAR(255) NOT NULL,
+    other TEXT,
+    site_type VARCHAR(255),
+    is_send BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

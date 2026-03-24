@@ -1,0 +1,48 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/gymdbd}
+    username: ${DB_USER:gym_admin}
+    password: ${DB_PASSWORD:gym_admin}
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: '10000'
+    jpa:
+      generate-ddl: false
+      open-in-view: false
+      show-sql: true
+  profiles:
+    active: local
+  mail:
+    host: ${MAIL_SMTP_HOST:smtp.beget.com}
+    port: ${MAIL_SMTP_POST:2525}
+    username: ${MAIL_USERNAME:your_email@yandex.ru}
+    password: ${MAIL_PASSWORD:your_app_password}
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          connection-timeout: 5000
+          timeout: 5000
+          write-timeout: 5000
+          auth: ${MAIL_AUTH_ENABLED:true}
+          ssl:
+            enable: ${MAIL_SSL_ENABLED:false}
+
+mail:
+  to: ${EMAIL_TO:test@mail.ru}
+  batchSize: ${EMAIL_BATCH_SIZE:10}
+
+logging:
+  level:
+    org.springframework.mail: DEBUG
+    jakarta.mail: DEBUG
+
+crons:
+  mailSender: ${SEND_MAIL_SCHEDULER:0 * * * * ?}
+
+cors:
+  origin: ${CORS_ORIGIN:*}
