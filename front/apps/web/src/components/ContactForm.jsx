@@ -12,7 +12,7 @@ export default function ContactForm() {
     email: "",
     message: "",
   })
-
+  const [success, setSuccess] = useState(false)
   const [errors, setErrors] = useState({})
   const [serverError, setServerError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -22,6 +22,7 @@ export default function ContactForm() {
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
+    setSuccess(false)
   }
 
   const validate = () => {
@@ -62,15 +63,8 @@ export default function ContactForm() {
 
       if (!res.ok) throw new Error()
 
-      setForm({
-        name: "",
-        siteType: "На платформе Tilda",
-        phone: "",
-        email: "",
-        message: "",
-      })
-
       setErrors({})
+      setSuccess(true)
     } catch {
       setServerError("Не удалось отправить форму. Попробуйте позже")
     } finally {
@@ -129,9 +123,10 @@ export default function ContactForm() {
                 <Select
                   value={form.siteType}
                   name="siteType"
-                  onChange={(val) =>
+                  onChange={(val) => {
                     setForm((prev) => ({ ...prev, siteType: val }))
-                  }
+                    setSuccess(false)
+                  }}
                 />
               </div>
 
@@ -143,9 +138,10 @@ export default function ContactForm() {
                 <IMaskInput
                   mask="+{7} (000) 000-00-00"
                   value={form.phone}
-                  onAccept={(value) =>
+                  onAccept={(value) => {
                     setForm((prev) => ({ ...prev, phone: value }))
-                  }
+                    setSuccess(false)
+                  }}
                   placeholder="+7 (___) ___-__-__"
                   className="w-full rounded-xl border border-white/10 bg-[#020617] px-5 py-4 text-white placeholder-gray-500 transition outline-none focus:border-orange-400/40 focus:ring-1 focus:ring-orange-400/30"
                 />
@@ -190,11 +186,21 @@ export default function ContactForm() {
                   {serverError}
                 </p>
               )}
-
+              {success && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="rounded-xl border border-green-400/20 bg-green-500/10 px-5 py-4 text-center text-sm text-green-300 backdrop-blur"
+                >
+                  Заявка успешно отправлена. Мы свяжемся с вами в ближайшее
+                  время
+                </motion.div>
+              )}
               {/* button */}
               <motion.button
                 type="submit"
-                disabled={loading}
+                disabled={loading || success}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative w-full overflow-hidden rounded-xl border border-orange-400/40 py-4 text-lg font-medium transition disabled:opacity-50"

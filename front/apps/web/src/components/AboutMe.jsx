@@ -77,11 +77,13 @@ export default function AboutMe() {
             {/* bottom info */}
             <div className="mt-6 flex items-center justify-between">
               <div>
-                <div className="text-sm text-gray-400">Frontend / UX</div>
+                <div className="text-sm text-gray-400">
+                  Frontend / UX / Backend
+                </div>
                 <div className="text-sm text-white">Web Developer</div>
               </div>
 
-              <div className="text-sm text-orange-400">6+ лет</div>
+              <div className="text-sm text-orange-400">опыт 6+ лет</div>
             </div>
           </div>
         </motion.div>
