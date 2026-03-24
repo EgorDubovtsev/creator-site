@@ -79,7 +79,10 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#020617] px-6 py-40 text-white">
+    <section
+      className="relative overflow-hidden bg-[#020617] px-6 py-40 text-white"
+      id="contacts"
+    >
       {/* ambient glow */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 h-[500px] w-[1000px] -translate-x-1/2 translate-y-1/2 bg-orange-500/[0.08] blur-[180px]" />
 

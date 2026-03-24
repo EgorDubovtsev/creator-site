@@ -472,6 +472,7 @@ export const StaggeredMenu = ({
                 <li className="sm-panel-itemWrap" key={it.label + idx}>
                   <a
                     className="sm-panel-item"
+                    onClick={closeMenu}
                     href={it.link}
                     aria-label={it.ariaLabel}
                     data-index={idx + 1}

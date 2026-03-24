@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 export default function WhyUpdate() {
   return (
-    <section className="relative bg-[#020617] px-6 py-40 text-white">
+    <section className="relative bg-[#020617] px-6 py-40 text-white" id="why">
       {/* top glow */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[1200px] -translate-x-1/2 bg-gradient-to-t from-orange-500/[0.06] to-transparent blur-[220px]" />
 

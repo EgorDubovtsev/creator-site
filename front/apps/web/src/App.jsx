@@ -16,10 +16,10 @@ import StaggeredMenu from "../../../src/component/StaggeredMenu"
 export function App() {
   const [isOpen, setIsOpen] = useState(false)
   const menuItems = [
-    { label: "Home", ariaLabel: "Go to home page", link: "/" },
-    { label: "About", ariaLabel: "Learn about us", link: "/about" },
-    { label: "Services", ariaLabel: "View our services", link: "/services" },
-    { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
+    { label: "Зачем", ariaLabel: "Why", link: "/#why" },
+    { label: "О нас", ariaLabel: "About us", link: "/#about" },
+    { label: "Услуги", ariaLabel: "Services", link: "/#services" },
+    { label: "Контакты", ariaLabel: "Contacts", link: "/#contacts" },
   ]
 
   return (

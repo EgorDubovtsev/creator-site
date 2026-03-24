@@ -3,7 +3,10 @@ import { ArrowUpRight } from "lucide-react"
 
 export default function AboutMe() {
   return (
-    <section className="relative -mt-30 overflow-hidden bg-[#020617] px-6 py-28 text-white">
+    <section
+      className="relative -mt-30 overflow-hidden bg-[#020617] px-6 py-28 text-white"
+      id="about"
+    >
       {/* ambient orange glow */}
       <div className="pointer-events-none absolute -top-20 left-1/2 h-[400px] w-[700px] -translate-x-1/2 bg-orange-500/10 blur-[140px]" />
 
