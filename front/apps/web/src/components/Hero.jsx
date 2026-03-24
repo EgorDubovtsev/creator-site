@@ -62,8 +62,8 @@ export const Hero = () => {
               ]}
               deletingSpeed={50}
               // variableSpeedEnabled={false}
-              variableSpeedMin={60}
-              variableSpeedMax={120}
+              // variableSpeedMin={60}
+              // variableSpeedMax={120}
               cursorBlinkDuration={0.5}
             />
             <h1 className="text-5xl leading-tight font-bold text-white md:text-6xl">

@@ -13,6 +13,7 @@ import ResultSection from "./components/ResultSection"
 import ServicesSection from "./components/ServicesSection"
 import ContactForm from "./components/ContactForm"
 import StaggeredMenu from "../../../src/component/StaggeredMenu"
+import BeforeAfterCarousel from "./components/BeforeAfterCarousel"
 export function App() {
   const [isOpen, setIsOpen] = useState(false)
   const menuItems = [
@@ -43,6 +44,7 @@ export function App() {
       <FeatureSection />
       <AboutMe />
       <WorkExamples />
+      <BeforeAfterCarousel />
       <ProcessSection />
       <ResultSection />
       <ServicesSection />
