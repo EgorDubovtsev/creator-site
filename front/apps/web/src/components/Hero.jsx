@@ -27,16 +27,16 @@ export const Hero = () => {
 
       {/* background layer 2 (parallax) */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-90"
+        className="absolute inset-0 hidden bg-cover bg-center opacity-90 md:block"
         style={{
-          marginLeft: "600px",
+          backgroundPosition: "calc(100% + 450px) center",
           backgroundImage: "url('/hand.png')",
           transform: `translateY(${offset * 0.2}px)`,
         }}
       />
 
       {/* gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent md:from-black/80 md:via-black/80" />
 
       {/* content */}
       <div className="relative z-10 flex h-full items-center">
@@ -46,20 +46,12 @@ export const Hero = () => {
               Вы
             </h1>
             <TextType
-              className="text-5xl leading-tight font-bold text-orange-500 md:text-6xl"
-              text={[
-                "теряете клиентов",
-                "отстаете от конкурентов",
-                "теряете деньги",
-              ]}
+              className="min-h-[120px] text-5xl leading-tight font-bold text-orange-500 md:min-h-0 md:text-6xl"
+              text={["теряете клиентов", "теряете прибыль", "упускаете заявки"]}
               typingSpeed={75}
               pauseDuration={1500}
               showCursor
               cursorCharacter="_"
-              texts={[
-                "Welcome to React Bits! Good to see you!",
-                "Build some amazing experiences!",
-              ]}
               deletingSpeed={50}
               // variableSpeedEnabled={false}
               // variableSpeedMin={60}

@@ -84,7 +84,7 @@ export default function ContactForm() {
         {/* header */}
         <div className="mb-16 text-center">
           <h2 className="text-4xl font-semibold tracking-tight md:text-5xl">
-            Хватит терять клиентов
+            Хотите перестать терять клиентов?
           </h2>
           <p className="mt-6 text-lg text-gray-400">
             Оставьте заявку — разберём ваш сайт и покажем, где вы теряете деньги

@@ -40,7 +40,7 @@ export default function AboutMe() {
             <span className="text-white">
               Моя задача — повысить эффективность существующего трафика
             </span>{" "}
-            и превратить посетителей сайта в заявки и клиентов.
+            и превратить посетителей сайта в клиентов.
           </p>
 
           {/* CTA */}
@@ -52,7 +52,9 @@ export default function AboutMe() {
               </button>
             </a>
 
-            <div className="text-sm text-gray-500">Отвечаю лично</div>
+            <div className="text-sm text-gray-500">
+              Начнем работу в ближайшее время
+            </div>
           </div>
         </motion.div>
 
