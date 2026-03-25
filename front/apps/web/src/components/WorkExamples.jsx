@@ -3,7 +3,7 @@ import ColorBends from "../../../../src/component/ColorBends"
 
 export const WorkExamples = () => {
   return (
-    <section className="relative flex w-full justify-center overflow-hidden bg-black py-28">
+    <section className="relative flex w-full justify-center overflow-hidden bg-black py-16 md:py-28">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <ColorBends
@@ -22,12 +22,12 @@ export const WorkExamples = () => {
       </div>
 
       {/* Контент */}
-      <div className="relative z-10 flex w-full max-w-7xl items-center gap-20 px-8">
+      <div className="relative z-10 flex w-full max-w-7xl flex-col items-center gap-10 px-6 md:flex-row md:gap-20 md:px-8">
         {/* Левая часть */}
-        <div className="max-w-md rounded bg-[#020617] p-4">
-          <h2 className="text-9xl text-white">Примеры</h2>
+        <div className="mx-auto max-w-md rounded bg-[#020617] p-4 text-center md:text-left">
+          <h2 className="text-4xl font-bold text-white md:text-9xl">Примеры</h2>
 
-          <p className="mt-6 text-lg leading-relaxed text-white">
+          <p className="mt-4 text-base leading-relaxed text-white md:mt-6 md:text-lg">
             Посмотрите несколько примеров интерфейсов и дизайнов. Мы создаём
             современные, быстрые и визуально чистые продукты, которые помогают
             компаниям выглядеть премиально и выделяться среди конкурентов.
@@ -35,7 +35,7 @@ export const WorkExamples = () => {
         </div>
 
         {/* Правая часть */}
-        <div className="relative flex h-[500px] w-[720px] items-center justify-center">
+        <div className="relative hidden h-[500px] w-[720px] items-center justify-center md:flex">
           <CardSwap
             width={400}
             cardDistance={60}
