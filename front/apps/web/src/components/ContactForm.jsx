@@ -7,7 +7,7 @@ import Select from "./Select"
 export default function ContactForm() {
   const [form, setForm] = useState({
     name: "",
-    siteType: "На платформе Tilda",
+    siteType: "На платформе Tilda Конструктор",
     phone: "",
     email: "",
     message: "",

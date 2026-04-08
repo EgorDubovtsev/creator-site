@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 const services = [
   {
-    title: "Tilda Site",
+    title: "Tilda Site Конструктор",
     desc: "Быстрое решение для запуска сайта с понятной структурой и современным дизайном.",
     pros: ["Быстрый запуск", "Простое управление", "Лёгкая поддержка"],
     cons: ["Ограничения платформы"],
@@ -11,14 +11,18 @@ const services = [
   },
   {
     title: "Code Site",
-    desc: "Индивидуальная разработка с нуля под задачи бизнеса и масштабирование.",
+    desc: "Индивидуальная разработка с нуля под задачи бизнеса на современных технологиях.",
     pros: [
       "Полная гибкость",
       "Нет ограничений",
       "Возможность реализовать любую логику",
+      "Есть варианты реализации",
+      "Независимость от платформы",
+      "Возможность реализовать профессиональные дизайны",
+      "Дешевле поддерживать",
     ],
     cons: ["Более долгий запуск"],
-    price: "от 60 000 ₽",
+    price: "от 25 000 ₽",
     highlight: true,
   },
 ]
@@ -57,7 +61,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.15 }}
               viewport={{ once: true }}
-              className={`group relative rounded-3xl border p-10 transition duration-300 ${
+              className={`group relative flex h-full flex-col rounded-3xl border p-10 transition duration-300 ${
                 item.highlight
                   ? "border-orange-400/40 bg-gradient-to-b from-orange-500/10 to-transparent"
                   : "border-white/10 bg-white/[0.03]"
@@ -65,13 +69,10 @@ export default function ServicesSection() {
             >
               {/* hover glow */}
               <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-500/10 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-
               {/* title */}
               <h3 className="mb-4 text-2xl font-medium">{item.title}</h3>
-
               {/* desc */}
               <p className="mb-8 leading-relaxed text-gray-400">{item.desc}</p>
-
               {/* pros */}
               <div className="mb-6">
                 <div className="mb-3 text-sm text-white">Преимущества</div>
@@ -84,7 +85,6 @@ export default function ServicesSection() {
                   ))}
                 </ul>
               </div>
-
               {/* cons */}
               <div className="mb-8">
                 <div className="mb-3 text-sm text-white">Особенности</div>
@@ -98,17 +98,15 @@ export default function ServicesSection() {
                 </ul>
               </div>
 
-              {/* price */}
-              <div className="mb-8 text-xl text-white">{item.price}</div>
-
-              {/* button */}
-              <a href="/#contacts">
-                <button className="relative overflow-hidden rounded-xl border border-orange-400/40 px-6 py-3 text-sm text-white transition hover:border-orange-400">
-                  <span className="relative z-10">Выбрать вариант</span>
-
-                  <span className="absolute inset-0 bg-orange-500/10 opacity-0 transition group-hover:opacity-100" />
-                </button>
-              </a>
+              <div className="mt-auto">
+                <div className="mb-6 text-xl text-white">{item.price}</div>
+                <a href="/#contacts">
+                  <button className="relative w-full overflow-hidden rounded-xl border border-orange-400/40 px-6 py-3 text-sm text-white transition hover:border-orange-400">
+                    <span className="relative z-10">Выбрать вариант</span>
+                    <span className="absolute inset-0 bg-orange-500/10 opacity-0 transition group-hover:opacity-100" />
+                  </button>
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
