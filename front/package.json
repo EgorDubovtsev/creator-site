@@ -3,17 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "packageManager": "npm@10.8.2",
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "turbo format",
-    "typecheck": "turbo typecheck"
-  },
+"scripts": {
+  "dev": "cd apps/web && npm run dev",
+  "build": "cd apps/web && npm run build",
+  "preview": "cd apps/web && npm run preview"
+},
   "devDependencies": {
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "turbo": "^2.8.17",
     "typescript": "5.9.3"
   },
   "engines": {

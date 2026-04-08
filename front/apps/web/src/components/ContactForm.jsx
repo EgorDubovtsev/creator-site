@@ -53,7 +53,7 @@ export default function ContactForm() {
     setLoading(true)
 
     try {
-      const res = await fetch(`${API_URL}/api/v1/form/request`, {
+      const res = await fetch(`${API_URL}/form/request`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

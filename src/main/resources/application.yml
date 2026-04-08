@@ -43,6 +43,6 @@ logging:
 
 crons:
   mailSender: ${SEND_MAIL_SCHEDULER:0 * * * * ?}
-
+//вставить таблитцы
 cors:
   origin: ${CORS_ORIGIN:*}
