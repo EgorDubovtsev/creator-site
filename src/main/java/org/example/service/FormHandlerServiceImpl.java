@@ -1,14 +1,18 @@
 package org.example.service;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.controller.dto.RequestFormRequest;
 import org.example.entity.ContactRequestEntity;
 import org.example.repository.ContactRequestRepository;
+import org.example.util.Const;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,15 +55,27 @@ public class FormHandlerServiceImpl implements FormHandlerService {
     }
 
     @Override
-    public void sendMail(ContactRequestEntity contactRequestEntity) {
-        SimpleMailMessage message = new SimpleMailMessage();
+    public void sendMail(ContactRequestEntity request) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
 
-        message.setTo(emailTo);
-        message.setSubject(SUBJECT);
-        message.setText(contactRequestEntity.toString());
-        message.setFrom(username);
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+
+        String html = Const.MAIL_TEMPLATE
+                .replace("${id}", String.valueOf(request.getId()))
+                .replace("${name}", request.getName())
+                .replace("${phone}", request.getPhone())
+                .replace("${email}", request.getEmail())
+                .replace("${siteType}", request.getSiteType())
+                .replace("${other}", request.getOther())
+                .replace("${createdAt}", request.getCreatedAt().toString())
+                .replace("${isSend}", String.valueOf(request.getIsSend()));
+
+        helper.setTo(emailTo);
+        helper.setSubject(SUBJECT);
+        helper.setText(html,true);
+        helper.setFrom(username);
         try {
-            log.info("Send mail {} {}",contactRequestEntity.getId(), message);
+            log.info("Send mail {} {}",request.getId(), message);
             mailSender.send(message);
 
         } catch (Exception e) {

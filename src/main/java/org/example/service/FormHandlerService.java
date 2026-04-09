@@ -1,5 +1,6 @@
 package org.example.service;
 
+import jakarta.mail.MessagingException;
 import org.example.controller.dto.RequestFormRequest;
 import org.example.entity.ContactRequestEntity;
 
@@ -10,7 +11,7 @@ public interface FormHandlerService {
 
     List<ContactRequestEntity> getContactsForSend(int batch);
 
-    void sendMail(ContactRequestEntity contactRequestEntity);
+    void sendMail(ContactRequestEntity contactRequestEntity) throws MessagingException;
 
     void saveSendResults(List<ContactRequestEntity> contactsForSend);
 }

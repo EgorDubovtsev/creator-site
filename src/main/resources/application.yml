@@ -18,9 +18,9 @@ spring:
     active: local
   mail:
     host: ${MAIL_SMTP_HOST:smtp.beget.com}
-    port: ${MAIL_SMTP_POST:2525}
-    username: ${MAIL_USERNAME:your_email@yandex.ru}
-    password: ${MAIL_PASSWORD:your_app_password}
+    port: ${MAIL_SMTP_PORT:2525}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     protocol: smtp
     properties:
       mail:
@@ -33,7 +33,7 @@ spring:
             enable: ${MAIL_SSL_ENABLED:false}
 
 mail:
-  to: ${EMAIL_TO:test@mail.ru}
+  to: ${EMAIL_TO}
   batchSize: ${EMAIL_BATCH_SIZE:10}
 
 logging:
@@ -43,6 +43,6 @@ logging:
 
 crons:
   mailSender: ${SEND_MAIL_SCHEDULER:0 * * * * ?}
-//вставить таблитцы
+
 cors:
-  origin: ${CORS_ORIGIN:*}
+  origin: ${CORS_ORIGIN:}

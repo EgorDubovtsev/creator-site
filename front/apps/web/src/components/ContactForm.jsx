@@ -32,6 +32,10 @@ export default function ContactForm() {
       newErrors.name = "Введите имя"
     }
 
+    if (!form.siteType.trim()) {
+      newErrors.name = "Укажите тип сайта"
+    }
+
     if (!form.email.trim()) {
       newErrors.email = "Введите email"
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
@@ -61,12 +65,21 @@ export default function ContactForm() {
         body: JSON.stringify(form),
       })
 
-      if (!res.ok) throw new Error()
+      if (!res.ok) {
+        if (res.status === 429) {
+          throw new Error("RATE_LIMIT")
+        }
+        throw new Error("GENERIC")
+      }
 
       setErrors({})
       setSuccess(true)
-    } catch {
-      setServerError("Не удалось отправить форму. Попробуйте позже")
+    } catch (err) {
+      if (err.message === "RATE_LIMIT") {
+        setServerError("Слишком много запросов. Попробуйте позже")
+      } else {
+        setServerError("Не удалось отправить форму. Попробуйте позже")
+      }
     } finally {
       setLoading(false)
     }
