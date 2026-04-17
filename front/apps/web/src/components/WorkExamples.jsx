@@ -28,9 +28,9 @@ export const WorkExamples = () => {
           <h2 className="text-4xl font-bold text-white md:text-9xl">Примеры</h2>
 
           <p className="mt-4 text-base leading-relaxed text-white md:mt-6 md:text-lg">
-            Посмотрите несколько примеров интерфейсов и дизайнов. Мы создаём
-            современные, быстрые и визуально чистые продукты, которые помогают
-            компаниям выглядеть премиально и выделяться среди конкурентов.
+            Несколько примеров интерфейсов и дизайнов. Мы создаём современные,
+            быстрые и визуально чистые продукты, которые помогают компаниям
+            выглядеть свежее и выделяться среди конкурентов.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export const WorkExamples = () => {
               <div
                 className="aspect-video w-[720px] rounded-xl border border-neutral-800 bg-cover bg-center shadow-xl"
                 style={{
-                  backgroundImage: "url('/example/ex1.png')",
+                  backgroundImage: "url('/example/ex1.webp')",
                 }}
               />
             </Card>
@@ -56,7 +56,7 @@ export const WorkExamples = () => {
               <div
                 className="aspect-video w-[720px] rounded-xl border border-neutral-800 bg-cover bg-center shadow-xl"
                 style={{
-                  backgroundImage: "url('/example/ex2.png')",
+                  backgroundImage: "url('/example/ex2.webp')",
                 }}
               />
             </Card>
@@ -65,7 +65,7 @@ export const WorkExamples = () => {
               <div
                 className="aspect-video w-[720px] rounded-xl border border-neutral-800 bg-cover bg-center shadow-xl"
                 style={{
-                  backgroundImage: "url('/example/ex3.png')",
+                  backgroundImage: "url('/example/ex3.webp')",
                 }}
               />
             </Card>

@@ -27,11 +27,12 @@ export function App() {
     <>
       <div className="pointer-events-none fixed top-0 left-0 z-[9999] h-screen w-full">
         <StaggeredMenu
+          logoUrl="/logo.png"
           position="left"
           items={menuItems}
           displayItemNumbering={true}
           menuButtonColor="#ffffff"
-          openMenuButtonColor="#fff"
+          openMenuButtonColor="#000000"
           changeMenuColorOnOpen={true}
           colors={["#020617", "#f97316"]}
           accentColor="#f97316"

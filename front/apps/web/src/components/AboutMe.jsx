@@ -36,17 +36,14 @@ export default function AboutMe() {
           </p>
 
           <p className="mb-8 leading-relaxed text-gray-400">
-            Работаю напрямую с заказчиками.{" "}
-            <span className="text-white">
-              Моя задача — повысить эффективность существующего трафика
-            </span>{" "}
-            и превратить посетителей сайта в клиентов.
+            Работаю напрямую с заказчиками. Моя задача — повысить эффективность
+            существующего трафика и превратить посетителей сайта в клиентов.
           </p>
 
           {/* CTA */}
           <div className="flex items-center gap-4">
             <a href="/#contacts">
-              <button className="flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3 font-medium text-black transition hover:bg-orange-400">
+              <button className="flex cursor-pointer items-center gap-2 rounded-xl bg-orange-500 px-6 py-3 font-medium text-black transition hover:bg-orange-400">
                 Связаться
                 <ArrowUpRight className="h-4 w-4" />
               </button>
@@ -73,7 +70,7 @@ export default function AboutMe() {
           <div className="relative rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl">
             {/* fake photo placeholder */}
             <div className="flex aspect-[4/5] items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-[#111827] to-[#020617] text-sm text-gray-500">
-              Ваша фотография
+              <img src="/im.png" alt="Автор" />
             </div>
 
             {/* bottom info */}

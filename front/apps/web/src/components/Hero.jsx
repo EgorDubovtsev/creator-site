@@ -21,7 +21,7 @@ export const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/back.png')",
+          backgroundImage: "url('/back.webp')",
         }}
       />
 
@@ -30,7 +30,7 @@ export const Hero = () => {
         className="absolute inset-0 hidden bg-cover bg-center opacity-90 md:block"
         style={{
           backgroundPosition: "calc(100% + 450px) center",
-          backgroundImage: "url('/hand.png')",
+          backgroundImage: "url('/hand2.webp')",
           transform: `translateY(${offset * 0.2}px)`,
         }}
       />

@@ -5,128 +5,128 @@ import { useEffect } from "react"
 
 const slides = [
   {
-    before: "/example/cases/bath/вандо1.png",
-    after: "/example/cases/bath/ван_пос1.png",
+    before: "/example/cases/bath/вандо1.webp",
+    after: "/example/cases/bath/ван_пос1.webp",
     title: "Редизайн магазина ванных пренадлежностей",
     category: "bath",
   },
   {
-    before: "/example/cases/bath/вандо2.png",
-    after: "/example/cases/bath/ванпос2.png",
+    before: "/example/cases/bath/вандо2.webp",
+    after: "/example/cases/bath/ванпос2.webp",
     title: "Редизайн магазина ванных пренадлежностей",
     category: "bath",
   },
   {
-    before: "/example/cases/ceil/потдо1.png",
-    after: "/example/cases/ceil/потпос2.png",
+    before: "/example/cases/ceil/потдо1.webp",
+    after: "/example/cases/ceil/потпос2.webp",
     title: "Редизайн для компании натяжных потолков",
     category: "ceil",
   },
   {
-    before: "/example/cases/ceil/потдо2.png",
-    after: "/example/cases/ceil/потпос3.png",
+    before: "/example/cases/ceil/потдо2.webp",
+    after: "/example/cases/ceil/потпос3.webp",
     title: "Редизайн для компании натяжных потолков",
     category: "ceil",
   },
   {
-    before: "/example/cases/ceil/потдо4.png",
-    after: "/example/cases/ceil/потпос4.png",
+    before: "/example/cases/ceil/потдо4.webp",
+    after: "/example/cases/ceil/потпос4.webp",
     title: "Редизайн для компании натяжных потолков",
     category: "ceil",
   },
   {
-    before: "/example/cases/jump/батдо1.png",
-    after: "/example/cases/jump/батпос1.png",
+    before: "/example/cases/jump/батдо1.webp",
+    after: "/example/cases/jump/батпос1.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
   },
   {
-    before: "/example/cases/jump/батдо2.png",
-    after: "/example/cases/jump/батпос4.png",
+    before: "/example/cases/jump/батдо2.webp",
+    after: "/example/cases/jump/батпос4.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/jump/батпос3.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/jump/батпос3.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
     isNew: true,
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/jump/батпос4.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/jump/батпос4.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
     isNew: true,
   },
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/jump/батпос5.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/jump/батпос5.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
     isNew: true,
   },
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/jump/батпос6.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/jump/батпос6.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
     isNew: true,
   },
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/ph/фот1.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/ph/фот1.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
     isNew: true,
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/ph/фот2.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/ph/фот2.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
     isNew: true,
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/ph/фот3.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/ph/фот3.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
     isNew: true,
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/ph/фот4.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/ph/фот4.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
     isNew: true,
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/ph/фот5.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/ph/фот5.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
     isNew: true,
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/ph/фот6.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/ph/фот6.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
     isNew: true,
   },
 
   {
-    before: "/example/placeholder.png",
-    after: "/example/cases/ph/фот7.png",
+    before: "/example/placeholder.webp",
+    after: "/example/cases/ph/фот7.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
     isNew: true,
@@ -144,6 +144,7 @@ export default function BeforeAfterCarousel() {
   const [index, setIndex] = useState(0)
   const [showAfter, setShowAfter] = useState(false)
   const [direction, setDirection] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   const current = slides[index]
 
@@ -151,6 +152,10 @@ export default function BeforeAfterCarousel() {
   useEffect(() => {
     setShowAfter(current.isNew ? true : false)
   }, [index])
+
+  useEffect(() => {
+    setIsLoading(true)
+  }, [index, showAfter])
 
   const next = () => {
     setDirection(1)
@@ -220,11 +225,19 @@ export default function BeforeAfterCarousel() {
             >
               {/* image */}
               <div className="relative aspect-video cursor-pointer overflow-hidden rounded-2xl border border-white/10">
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+                    <div className="h-10 w-10 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  </div>
+                )}
                 <img
                   src={showAfter ? current.after : current.before}
                   alt="Пример"
-                  className="h-full w-full object-cover transition duration-500"
+                  className={`h-full w-full object-cover transition duration-500 ${
+                    isLoading ? "opacity-0" : "opacity-100"
+                  }`}
                   onClick={() => setShowAfter(!showAfter)}
+                  onLoad={() => setIsLoading(false)}
                 />
 
                 {/* 🔥 УЛУЧШЕННЫЙ ЛЕЙБЛ */}
@@ -266,7 +279,7 @@ export default function BeforeAfterCarousel() {
               <div className="mt-6 flex items-center justify-between">
                 <div className="text-sm text-gray-300">{current.title}</div>
 
-                <div className="text-sm text-orange-400">
+                <div className="min-w-fit text-sm text-orange-400">
                   {index + 1} / {slides.length}
                 </div>
               </div>
