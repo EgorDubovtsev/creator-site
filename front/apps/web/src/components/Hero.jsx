@@ -16,7 +16,7 @@ export const Hero = () => {
   }, [])
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden [@media(max-width:768px)]:pt-[150px]">
       {/* background layer 1 */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -53,9 +53,6 @@ export const Hero = () => {
               showCursor
               cursorCharacter="_"
               deletingSpeed={50}
-              // variableSpeedEnabled={false}
-              // variableSpeedMin={60}
-              // variableSpeedMax={120}
               cursorBlinkDuration={0.5}
             />
             <h1 className="text-5xl leading-tight font-bold text-white md:text-6xl">
