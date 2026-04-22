@@ -16,7 +16,7 @@ export const Hero = () => {
   }, [])
 
   return (
-    <section className="relative h-screen w-full overflow-hidden [@media(max-width:768px)]:pt-[150px]">
+    <section className="relative h-screen w-full overflow-hidden">
       {/* background layer 1 */}
       <div
         className="absolute inset-0 bg-cover bg-center"

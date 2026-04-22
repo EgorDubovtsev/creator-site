@@ -2,134 +2,106 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect } from "react"
+import { useRef } from "react"
 
 const slides = [
   {
-    before: "/example/cases/bath/вандо1.webp",
     after: "/example/cases/bath/ван_пос1.webp",
     title: "Редизайн магазина ванных пренадлежностей",
     category: "bath",
   },
   {
-    before: "/example/cases/bath/вандо2.webp",
     after: "/example/cases/bath/ванпос2.webp",
     title: "Редизайн магазина ванных пренадлежностей",
     category: "bath",
   },
   {
-    before: "/example/cases/ceil/потдо1.webp",
     after: "/example/cases/ceil/потпос2.webp",
     title: "Редизайн для компании натяжных потолков",
     category: "ceil",
   },
   {
-    before: "/example/cases/ceil/потдо2.webp",
     after: "/example/cases/ceil/потпос3.webp",
     title: "Редизайн для компании натяжных потолков",
     category: "ceil",
   },
   {
-    before: "/example/cases/ceil/потдо4.webp",
     after: "/example/cases/ceil/потпос4.webp",
     title: "Редизайн для компании натяжных потолков",
     category: "ceil",
   },
   {
-    before: "/example/cases/jump/батдо1.webp",
     after: "/example/cases/jump/батпос1.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
   },
   {
-    before: "/example/cases/jump/батдо2.webp",
     after: "/example/cases/jump/батпос4.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/jump/батпос3.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
-    isNew: true,
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/jump/батпос4.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
-    isNew: true,
   },
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/jump/батпос5.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
-    isNew: true,
   },
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/jump/батпос6.webp",
     title: "Редизайн для батутного центра",
     category: "jump",
-    isNew: true,
   },
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/ph/фот1.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
-    isNew: true,
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/ph/фот2.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
-    isNew: true,
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/ph/фот3.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
-    isNew: true,
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/ph/фот4.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
-    isNew: true,
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/ph/фот5.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
-    isNew: true,
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/ph/фот6.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
-    isNew: true,
   },
 
   {
-    before: "/example/placeholder.webp",
     after: "/example/cases/ph/фот7.webp",
     title: "Создание сайта для фотографа",
     category: "photo",
-    isNew: true,
   },
 ]
 
@@ -141,35 +113,67 @@ const menu = [
 ]
 
 export default function BeforeAfterCarousel() {
-  const [index, setIndex] = useState(0)
-  const [showAfter, setShowAfter] = useState(false)
-  const [direction, setDirection] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-
+  const [[page, dir], setPage] = useState([0, 0])
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 120 : -120,
+      opacity: 0,
+      scale: 0.96,
+      filter: "blur(8px)",
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? -120 : 120,
+      opacity: 0,
+      scale: 0.96,
+      filter: "blur(8px)",
+    }),
+  }
+  const intervalRef = useRef(null)
+  const index = ((page % slides.length) + slides.length) % slides.length
   const current = slides[index]
+  const startAutoSlide = () => {
+    intervalRef.current = setInterval(() => {
+      setPage(([p]) => [p + 1, 1])
+    }, 4000)
+  }
 
-  // 👉 ВАЖНО: при смене слайда учитываем isNew
-  useEffect(() => {
-    setShowAfter(current.isNew ? true : false)
-  }, [index])
+  const resetAutoSlide = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    startAutoSlide()
+  }
 
   useEffect(() => {
-    setIsLoading(true)
-  }, [index, showAfter])
+    startAutoSlide()
+    return () => clearInterval(intervalRef.current)
+  }, [])
 
   const next = () => {
-    setDirection(1)
-    setIndex((prev) => (prev + 1) % slides.length)
+    setPage(([p]) => [p + 1, 1])
+    resetAutoSlide()
   }
 
   const prev = () => {
-    setDirection(-1)
-    setIndex((prev) => (prev - 1 + slides.length) % slides.length)
+    setPage(([p]) => [p - 1, -1])
+    resetAutoSlide()
   }
 
-  const goToSlide = (i) => {
-    setDirection(i > index ? 1 : -1)
-    setIndex(i)
+  const goToSlide = (targetIndex) => {
+    const currentIndex =
+      ((page % slides.length) + slides.length) % slides.length
+
+    const direction = targetIndex > currentIndex ? 1 : -1
+
+    setPage([targetIndex, direction])
+    resetAutoSlide()
   }
 
   return (
@@ -183,7 +187,9 @@ export default function BeforeAfterCarousel() {
           <div className="mb-4 text-sm tracking-widest text-orange-400 uppercase">
             Кейсы
           </div>
-          <h2 className="text-4xl font-semibold md:text-5xl">До / После</h2>
+          <h2 className="text-4xl font-semibold md:text-5xl">
+            Наши результаты
+          </h2>
         </div>
 
         {/* 🔥 МЕНЮ СЛАЙДОВ */}
@@ -218,89 +224,73 @@ export default function BeforeAfterCarousel() {
 
         {/* carousel */}
         <div className="relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              className="relative rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl"
-            >
-              {/* image */}
-              <div className="relative aspect-video cursor-pointer overflow-hidden rounded-2xl border border-white/10">
-                {isLoading && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-                    <div className="h-10 w-10 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                  </div>
-                )}
-                <img
-                  src={showAfter ? current.after : current.before}
+          <div className="relative rounded-3xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-xl md:p-6 lg:p-8">
+            {/* image */}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 md:aspect-[16/9] lg:aspect-[18/9]">
+              <AnimatePresence mode="wait" custom={dir}>
+                <motion.img
+                  key={page} // ❗️ВАЖНО: не index, а page
+                  src={current.after}
                   alt="Пример"
-                  className={`h-full w-full object-cover transition duration-500 ${
-                    isLoading ? "opacity-0" : "opacity-100"
-                  }`}
-                  onClick={() => setShowAfter(!showAfter)}
+                  custom={dir}
+                  initial={{ x: dir > 0 ? 100 : -100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: dir > 0 ? -100 : 100, opacity: 0 }}
+                  transition={{
+                    x: { duration: 0.3, ease: "easeOut" },
+                    opacity: { duration: 0.2 },
+                  }}
+                  className="absolute inset-0 h-full w-full object-cover"
                   onLoad={() => setIsLoading(false)}
                 />
+              </AnimatePresence>
 
-                {/* 🔥 УЛУЧШЕННЫЙ ЛЕЙБЛ */}
-                <div className="absolute bottom-4 left-4 rounded-xl border border-white/10 bg-black/70 px-5 py-2 text-sm font-medium backdrop-blur-xl md:text-base">
-                  {showAfter ? "После" : "До"}
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+                  <div className="h-10 w-10 animate-spin rounded-full border-2 border-white border-t-transparent" />
                 </div>
+              )}
 
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute top-4 right-4 rounded-xl border border-white/10 bg-black/70 px-4 py-2 text-xs font-medium text-white backdrop-blur-xl md:text-sm"
-                >
-                  Нажми на фото для сравнения
-                </motion.div>
-                {/* arrows */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    prev()
-                  }}
-                  className="absolute top-1/2 left-3 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 backdrop-blur transition hover:bg-black/70"
-                >
-                  <ArrowLeft className="h-5 w-5" />
-                </button>
+              {/* shine */}
+              <motion.div
+                key={index + "-shine"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.2 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent"
+              />
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    next()
-                  }}
-                  className="absolute top-1/2 right-3 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 backdrop-blur transition hover:bg-black/70"
-                >
-                  <ArrowRight className="h-5 w-5" />
-                </button>
+              {/* arrows */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  prev()
+                }}
+                className="absolute top-1/2 left-3 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 backdrop-blur transition hover:bg-black/70"
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  next()
+                }}
+                className="absolute top-1/2 right-3 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 backdrop-blur transition hover:bg-black/70"
+              >
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* bottom */}
+            <div className="mt-6 flex items-center justify-between">
+              <div className="text-sm text-gray-300">{current.title}</div>
+
+              <div className="min-w-fit text-sm text-orange-400">
+                {index + 1} / {slides.length}
               </div>
-
-              {/* bottom */}
-              <div className="mt-6 flex items-center justify-between">
-                <div className="text-sm text-gray-300">{current.title}</div>
-
-                <div className="min-w-fit text-sm text-orange-400">
-                  {index + 1} / {slides.length}
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* controls */}
-          <div className="mt-8 flex justify-center gap-4">
-            <button
-              onClick={prev}
-              className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] transition hover:bg-white/[0.06]"
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </button>
-
-            <button
-              onClick={next}
-              className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] transition hover:bg-white/[0.06]"
-            >
-              <ArrowRight className="h-5 w-5" />
-            </button>
+            </div>
           </div>
         </div>
       </div>

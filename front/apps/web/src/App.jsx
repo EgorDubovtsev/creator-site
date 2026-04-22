@@ -12,32 +12,23 @@ import ProcessSection from "./components/ProcessSection"
 import ResultSection from "./components/ResultSection"
 import ServicesSection from "./components/ServicesSection"
 import ContactForm from "./components/ContactForm"
-import StaggeredMenu from "../../../src/component/StaggeredMenu"
 import BeforeAfterCarousel from "./components/BeforeAfterCarousel"
 export function App() {
   const [isOpen, setIsOpen] = useState(false)
   const menuItems = [
     { label: "Зачем", ariaLabel: "Why", link: "/#why" },
-    { label: "О нас", ariaLabel: "About us", link: "/#about" },
+    { label: "Обо мне", ariaLabel: "About us", link: "/#about" },
     { label: "Услуги", ariaLabel: "Services", link: "/#services" },
     { label: "Контакты", ariaLabel: "Contacts", link: "/#contacts" },
   ]
 
   return (
     <>
-      <div className="pointer-events-none fixed top-0 left-0 z-[9999] h-screen w-full">
-        <StaggeredMenu
-          logoUrl="/logo.png"
-          position="left"
-          items={menuItems}
-          displayItemNumbering={true}
-          menuButtonColor="#ffffff"
-          openMenuButtonColor="#000000"
-          changeMenuColorOnOpen={true}
-          colors={["#020617", "#f97316"]}
-          accentColor="#f97316"
-          onMenuOpen={() => setIsOpen(true)}
-          onMenuClose={() => setIsOpen(false)}
+      <div className="fixed top-4 left-4 z-50">
+        <img
+          src="/logo.png"
+          alt="logo"
+          className="h-10 w-auto object-contain md:h-12 lg:h-14"
         />
       </div>
       <Hero />
