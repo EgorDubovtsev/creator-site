@@ -16,7 +16,7 @@ export const Hero = () => {
   }, [])
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden pt-30 pb-15">
       {/* background layer 1 */}
       <div
         className="absolute inset-0 bg-cover bg-center"

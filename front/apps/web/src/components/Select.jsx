@@ -5,7 +5,7 @@ export default function Select({ value, onChange }) {
   const ref = useRef(null)
 
   const options = [
-    { value: "tilda", label: "На платформе Tilda" },
+    { value: "ai", label: "С использованием AI" },
     { value: "custom", label: "Индивидуальная разработка" },
   ]
 
