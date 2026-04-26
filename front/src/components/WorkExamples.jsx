@@ -1,5 +1,5 @@
-import CardSwap, { Card } from "../../../../src/component/CardSwap"
-import ColorBends from "../../../../src/component/ColorBends"
+import CardSwap, { Card } from "../component/CardSwap"
+import ColorBends from "../component/ColorBends"
 
 export const WorkExamples = () => {
   return (

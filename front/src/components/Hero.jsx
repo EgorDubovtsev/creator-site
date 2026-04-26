@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
-import TextType from "../../../../src/component/TextType"
-import Magnet from "../../../../src/component/Magnet"
+import TextType from "../component/TextType"
+import Magnet from "../component/Magnet"
 
 export const Hero = () => {
   const [offset, setOffset] = useState(0)

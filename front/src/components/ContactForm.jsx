@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { IMaskInput } from "react-imask"
-import ElectricBorder from "../../../../src/component/ElectricBorder"
 import Select from "./Select"
+import ElectricBorder from "../component/ElectricBorder"
 
 export default function ContactForm() {
   const [form, setForm] = useState({
